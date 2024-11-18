@@ -15,7 +15,11 @@ jobs:
       actions: read
       contents: read
     steps:
-    - uses: actions/checkout@v4
+    - name: Upload njsscan report
+      uses: github/codeql-action/upload-sarif@v3
+      with:
+        # Path to SARIF file relative to the root of the repository
+        sarif_file: results.sarif
     - name: nodejsscan scan
       id: njsscan
       uses: ajinabraham/njsscan-action@master
